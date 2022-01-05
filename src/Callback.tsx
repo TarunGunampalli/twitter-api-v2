@@ -1,6 +1,6 @@
 // import { Buffer } from 'buffer';
 
-async function getTweets(userID, accessCode) {
+async function getTweets(userID: string, accessCode: string) {
 	const response = await fetch(`https://api.twitter.com/2/users/${userID}/tweets`, {
 		method: 'GET', // *GET, POST, PUT, DELETE, etc.
 		mode: 'no-cors', // no-cors, *cors, same-origin
@@ -18,7 +18,7 @@ async function getTweets(userID, accessCode) {
 	return response;
 }
 
-async function getAccessToken(authorizationCode) {
+async function getAccessToken(authorizationCode: string) {
 	// const basicAuth = Buffer.from(`${process.env.REACT_APP_CLIENT_ID}:${process.env.REACT_APP_CLIENT_SECRET}`).toString(
 	// 	'base64'
 	// );
@@ -47,8 +47,8 @@ async function getAccessToken(authorizationCode) {
 }
 
 const Callback = () => {
-	const params = new URLSearchParams(window.location.search);
-	const authorizationCode = params.get('ctode');
+	const params: URLSearchParams = new URLSearchParams(window.location.search);
+	const authorizationCode: string = params.get('code') as string;
 	// getAccessToken(authorizationCode);
 	return (
 		<div>
